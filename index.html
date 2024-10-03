@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D立方体与文字展示</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        height: 100vh;
+    }
+    .container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+    .cube-container {
+        flex: 0 0 38.2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1000px;
+    }
+    .text-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .cube {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotate 10s infinite linear;
+    }
+    .face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 2px solid #000;
+        opacity: 0.6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+    }
+    .front { transform: rotateY(0deg) translateZ(100px); background-color: #ff5252; }
+    .back { transform: rotateY(180deg) translateZ(100px); background-color: #ff4081; }
+    .right { transform: rotateY(90deg) translateZ(100px); background-color: #7c4dff; }
+    .left { transform: rotateY(-90deg) translateZ(100px); background-color: #536dfe; }
+    .top { transform: rotateX(90deg) translateZ(100px); background-color: #00bcd4; }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); background-color: #009688; }
+    @keyframes rotate {
+        0% { transform: rotateX(0) rotateY(0); }
+        100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+    .text {
+        font-size: 24px;
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+    }
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+        .cube-container {
+            flex: 0 0 38.2vh;
+        }
+        .text-container {
+            flex: 1;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="cube-container">
+        <div class="cube">
+            <div class="face front">前</div>
+            <div class="face back">后</div>
+            <div class="face right">右</div>
+            <div class="face left">左</div>
+            <div class="face top">上</div>
+            <div class="face bottom">下</div>
+        </div>
+    </div>
+    <div class="text-container">
+        <p class="text">这是一段渐渐显示的文字。3D立方体展示了空间的六个方向，象征着我们探索世界的无限可能。</p>
+    </div>
+</div>
+<script>
+    document.querySelector('.cube').addEventListener('click', function() {
+        this.style.animationPlayState = 
+            (this.style.animationPlayState === 'paused') ? 'running' : 'paused';
+    });
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.querySelector('.text').style.opacity = '1';
+        }, 500);
+    });
+</script>
+</body>
+</html>
