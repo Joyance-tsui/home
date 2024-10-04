@@ -12,6 +12,7 @@ body {
   background-color: #f0f0f0;
   display: flex;
   height: 100vh;
+  overflow-x: hidden;
 }
 .container {
   display: flex;
@@ -127,14 +128,13 @@ body {
     flex-direction: column;
   }
   .cube-container {
-    top: 38.2%;
-    left: 50%;
+    top: 30%;
+    left: 80.9%;
     transform: translate(-50%, -50%);
   }
   .text-container {
-    top: 38.2%;
+    top: calc(30% + 160px);
     left: 0;
-    transform: translateY(140px);
     width: 100%;
     padding: 20px;
   }
@@ -145,7 +145,7 @@ body {
 </style>
 </head>
 <body>
-<div class="hint">(you can push the shape to stop it if you want</div>
+<div class="hint">(you can push the shape to stop it if you want)</div>
 <div class="container">
   <div class="cube-container">
     <div class="cube">
@@ -165,7 +165,7 @@ body {
           Projects: 
           <a href="https://b.joyance.page/cn" target="_blank" class="project-link">Blog</a> | 
           <a href="https://atom.joyance.page" target="_blank" class="project-link">Atom moddle</a> | 
-          <a href="https://start.joyance.page" target="_blank" class="project-link">Start page</a> | 
+          <a href="https://start.joyance.page" target="_blank" class="project-link">Start page</a> 
         </div>
       </div>
     </div>
